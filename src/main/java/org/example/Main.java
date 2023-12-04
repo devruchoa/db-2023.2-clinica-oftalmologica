@@ -1,19 +1,15 @@
 package org.example;
 
 import org.example.dao.ConsultaMedicaDAO;
-import org.example.dao.EspecificacaoLenteDAO;
 import org.example.dao.MedicoDAO;
 import org.example.dao.PacienteDAO;
 import org.example.model.ConsultaMedica;
-import org.example.model.EspecificacaoLente;
 import org.example.model.Medico;
 import org.example.model.Paciente;
 
-import java.util.List;
-
 public class Main {
 
-    static PacienteDAO pacienteDAO =  new PacienteDAO();
+    static PacienteDAO pacienteDAO = new PacienteDAO();
     static MedicoDAO medicoDAO = new MedicoDAO();
     static ConsultaMedicaDAO consultaMedicaDAO = new ConsultaMedicaDAO();
 

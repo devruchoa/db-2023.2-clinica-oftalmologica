@@ -11,10 +11,10 @@ public class ConnectionDB {
 
     private static final Logger LOGGER = Logger.getLogger(ConnectionDB.class.getName());
 
-    private static final String dbName = "oftalmodb";
-    private static final String dbUrl = "jdbc:postgresql://localhost:5433/";
-    private static final String username = "postgres";
-    private static final String password = "postgres";
+    private static final String dbName = System.getenv("DATABASE_NAME");
+    private static final String dbUrl = System.getenv("DATABASE_URL");
+    private static final String username = System.getenv("DATABASE_USERNAME");
+    private static final String password = System.getenv("DATABASE_PASSWORD");
 
     public static Connection connectionDB() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");

@@ -31,9 +31,6 @@ public class ConsultaMedicaDAO extends ConnectionDB {
             "WHERE cm.id_paciente = ? " +
             "ORDER BY cm.dt_consulta ASC " +
             "LIMIT 1";
-    private static final String MEDIA_CONSULTA_POR_MEDICO_SQL = "SELECT avg(datediff(day, cm.dt_consulta, getdate())) as media FROM " + TABLE_NAME + " cm " +
-            "INNER JOIN medicos m ON m.id = cm.id_medico " +
-            "WHERE m.id = ?";
     private static final String TOTAL = "SELECT count(1) FROM " + TABLE_NAME;
 
     public int count() {
@@ -198,22 +195,5 @@ public class ConsultaMedicaDAO extends ConnectionDB {
             throw new RuntimeException(e);
         }
         return entity;
-    }
-
-    public int mediaConsultaPorMedico(int idMedico) {
-        int media = 0;
-        try (PreparedStatement preparedStatement = prepareSQL(MEDIA_CONSULTA_POR_MEDICO_SQL)) {
-            preparedStatement.setInt(1, idMedico);
-            ResultSet rs = preparedStatement.executeQuery();
-
-            while (rs.next()) {
-                media = rs.getInt("media");
-            }
-        } catch (SQLException e) {
-            printSQLException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        return media;
     }
 }
